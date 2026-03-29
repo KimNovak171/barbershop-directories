@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand light background */
+  --background: #f4f7fa;
+  --foreground: #0f172a;
+}
+
+@theme inline {
+  /* Base colors driven by CSS variables */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Brand palette – exact hex codes */
+  --color-navy: #2d2d2d;
+  --color-teal: #0891b2;
+  --color-gold: #0891b2;
+
+  /* Supporting tints/shades derived from brand colors */
+  --color-navy-soft: #3a3a3a;
+  --color-teal-soft: #0891b2;
+  --color-gold-soft: #0891b2;
+
+  /* Neutral surface colors */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f4f7fa;
+
+  /* Typography */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Keep the site light and clean */
+    --background: #f4f7fa;
+    --foreground: #0f172a;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
