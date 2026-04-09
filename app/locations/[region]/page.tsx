@@ -12,11 +12,11 @@ export function generateMetadata({
   const regionCode = params.region.toUpperCase();
 
   return {
-    title: `Nail salons in ${regionCode}`,
-    description: `Explore nail salon options in ${regionCode} with NailSalonDirectories.com.`,
+    title: `Barber shops in ${regionCode}`,
+    description: `Explore barber shop options in ${regionCode} with BarbershopDirectories.com.`,
     openGraph: {
-      title: `Nail salons in ${regionCode} | NailSalonDirectories.com`,
-      description: `Browse nail salons and nail technicians in ${regionCode}.`,
+      title: `Barber shops in ${regionCode} | BarbershopDirectories.com`,
+      description: `Browse barber shops and barbers in ${regionCode}.`,
       url: `/locations/${params.region}`,
       type: "website",
     },
@@ -30,15 +30,15 @@ export default function RegionPage({ params }: RegionPageProps) {
     <main className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
       <div className="space-y-4">
         <p className="text-sm font-medium uppercase tracking-[0.2em] text-teal">
-          Salons by region
+          Shops by region
         </p>
         <h1 className="text-3xl font-semibold text-navy">
-          Nail salons in {regionCode}
+          Barber shops in {regionCode}
         </h1>
         <p className="max-w-2xl text-sm text-slate-600">
           This is a placeholder view for{" "}
           <span className="font-semibold">{regionCode}</span>. Here you&apos;ll
-          be able to browse nail salons and nail technicians in this state or
+          be able to browse barber shops and barbers in this state or
           province.
         </p>
         <div className="mt-6 rounded-xl border border-surface-muted bg-surface px-4 py-6 text-sm text-slate-500">

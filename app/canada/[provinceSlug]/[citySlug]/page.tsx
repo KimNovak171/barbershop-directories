@@ -7,11 +7,11 @@ import {
   getOtherCitiesInProvince,
 } from "@/lib/canadaFacilities";
 import {
-  DEFAULT_SALON_CARE_TYPES_SENTENCE,
-  salonCategorySchemaThings,
+  DEFAULT_BARBER_CARE_TYPES_SENTENCE,
+  barberCategorySchemaThings,
 } from "@/lib/careTypesProse";
 
-const siteUrl = "https://nailsalondirectories.com";
+const siteUrl = "https://barbershopdirectories.com";
 
 type CanadaCityPageProps = {
   params: Promise<{ provinceSlug: string; citySlug: string }>;
@@ -28,8 +28,8 @@ export async function generateMetadata({
   const { provinceName, cityName, facilities: cityFacilities } =
     await getCanadaCityFacilities(safeProvince, safeCity);
   const count = Array.isArray(cityFacilities) ? cityFacilities.length : 0;
-  const title = `Nail Salons in ${cityName}, ${provinceName}, Canada | Nail Salon Directories`;
-  const description = `Find ${count.toLocaleString()} nail salons in ${cityName}, ${provinceName}. Compare services and contact details. Verified listings with ratings and reviews.`;
+  const title = `Barber Shops in ${cityName}, ${provinceName}, Canada | Barber Shop Directories`;
+  const description = `Find ${count.toLocaleString()} barber shops in ${cityName}, ${provinceName}. Compare services and contact details. Verified listings with ratings and reviews.`;
 
   return {
     title,
@@ -41,14 +41,14 @@ export async function generateMetadata({
       title,
       description,
       url: canonicalPath,
-      siteName: "NailSalonDirectories.com",
+      siteName: "BarbershopDirectories.com",
       type: "website",
       images: [
         {
           url: "/og-image.svg",
           width: 1200,
           height: 630,
-          alt: `${cityName}, ${provinceName} nail salon directory preview`,
+          alt: `${cityName}, ${provinceName} barber shop directory preview`,
         },
       ],
     },
@@ -98,7 +98,7 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
   const careTypesText =
     careTypes.length > 0
       ? careTypes.slice(0, 4).join(", ")
-      : DEFAULT_SALON_CARE_TYPES_SENTENCE;
+      : DEFAULT_BARBER_CARE_TYPES_SENTENCE;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -107,7 +107,7 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
       {
         "@type": "ListItem",
         position: 1,
-        name: "NailSalonDirectories.com",
+        name: "BarbershopDirectories.com",
         item: `${siteUrl}/`,
       },
       {
@@ -134,17 +134,17 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
   const webpageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `Nail Salons in ${cityName}, ${provinceName}, Canada`,
+    name: `Barber Shops in ${cityName}, ${provinceName}, Canada`,
     url: `${siteUrl}/canada/${provinceSlugNorm}/${citySlugNorm}`,
     isPartOf: {
       "@type": "WebSite",
-      name: "NailSalonDirectories.com",
+      name: "BarbershopDirectories.com",
       url: `${siteUrl}/`,
     },
     about: [
-      { "@type": "Thing", name: `${cityName} nail salons` },
-      { "@type": "Thing", name: `${provinceName} nail salon listings` },
-      ...salonCategorySchemaThings(),
+      { "@type": "Thing", name: `${cityName} barber shops` },
+      { "@type": "Thing", name: `${provinceName} barber shop listings` },
+      ...barberCategorySchemaThings(),
     ],
     speakable: {
       "@type": "SpeakableSpecification",
@@ -164,20 +164,20 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
       />
       <header className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
-          Salons by city
+          Barber shops by city
         </p>
         <h1 className="text-3xl font-semibold text-navy">
-          Nail Salons in {cityName}, {provinceName}
+          Barber Shops in {cityName}, {provinceName}
         </h1>
         <p className="max-w-2xl text-sm text-slate-600">
           {cityName} has {facilities.length.toLocaleString()} verified
-          salon listings including {careTypesText}. Browse all options below,
+          barber shop listings including {careTypesText}. Browse all options below,
           each with Google Maps profile links and ratings data where available.
         </p>
         <p className="max-w-2xl text-sm text-slate-600">
-          Compare salons side by side, review services and contact
+          Compare shops side by side, review services and contact
           details, and share this page with friends or family as you plan
-          your next visit in {provinceName}.
+          your next haircut or shave in {provinceName}.
         </p>
       </header>
 
@@ -213,13 +213,13 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
 
       <section className="mt-8 space-y-4">
         <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-navy">
-          Salons in {cityName}
+          Barber shops in {cityName}
         </h2>
 
         {facilities.length === 0 ? (
           <p className="text-sm text-slate-600">
             We don&apos;t have listings for {cityName}, {provinceName}{" "}
-            yet. As new data becomes available, salons will appear here.
+            yet. As new data becomes available, barber shops will appear here.
           </p>
         ) : (
           <div className="grid gap-4 md:grid-cols-2">
@@ -248,7 +248,7 @@ export default async function CanadaCityPage({ params }: CanadaCityPageProps) {
                 <p className="font-medium">{city.cityName}</p>
                 <p className="text-xs text-slate-600">
                   {city.facilityCount.toLocaleString()}{" "}
-                  {city.facilityCount === 1 ? "salon" : "salons"}
+                  {city.facilityCount === 1 ? "shop" : "shops"}
                 </p>
               </Link>
             ))}

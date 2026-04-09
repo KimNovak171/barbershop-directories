@@ -6,11 +6,11 @@ import {
   getProvinceSummary,
 } from "@/lib/canadaFacilities";
 import {
-  DEFAULT_SALON_CARE_TYPES_SENTENCE,
-  salonCategorySchemaThings,
+  DEFAULT_BARBER_CARE_TYPES_SENTENCE,
+  barberCategorySchemaThings,
 } from "@/lib/careTypesProse";
 
-const siteUrl = "https://nailsalondirectories.com";
+const siteUrl = "https://barbershopdirectories.com";
 
 type ProvincePageProps = {
   params: Promise<{ provinceSlug: string }>;
@@ -27,8 +27,8 @@ export async function generateMetadata({
     safeSlug,
   );
 
-  const title = `Nail Salons in ${provinceName}, Canada | Nail Salon Directories`;
-  const descriptor = `Find ${totalFacilities.toLocaleString()} salons in ${provinceName}, Canada. Compare services and contact details. Verified listings with ratings and reviews.`;
+  const title = `Barber Shops in ${provinceName}, Canada | Barber Shop Directories`;
+  const descriptor = `Find ${totalFacilities.toLocaleString()} barber shops in ${provinceName}, Canada. Compare services and contact details. Verified listings with ratings and reviews.`;
 
   return {
     title,
@@ -40,14 +40,14 @@ export async function generateMetadata({
       title,
       description: descriptor,
       url: canonicalPath,
-      siteName: "NailSalonDirectories.com",
+      siteName: "BarbershopDirectories.com",
       type: "website",
       images: [
         {
           url: "/og-image.svg",
           width: 1200,
           height: 630,
-          alt: `${provinceName} nail salon directory preview`,
+          alt: `${provinceName} barber shop directory preview`,
         },
       ],
     },
@@ -71,8 +71,8 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
     careTypes,
   } = await getProvinceSummary(provinceSlug ?? "");
 
-  const salonFocusText =
-    "nail salons, nail technicians, manicurists, manicures, and pedicures";
+  const barberFocusText =
+    "barber shops, barbers, haircuts, and shaves";
   const majorCities = [...cities]
     .sort((a, b) => b.facilityCount - a.facilityCount)
     .slice(0, 6)
@@ -84,7 +84,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
   const careTypesSentence =
     topCareTypes.length > 0
       ? topCareTypes.join(", ")
-      : DEFAULT_SALON_CARE_TYPES_SENTENCE;
+      : DEFAULT_BARBER_CARE_TYPES_SENTENCE;
 
   const breadcrumbSchema = {
     "@context": "https://schema.org",
@@ -93,7 +93,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
       {
         "@type": "ListItem",
         position: 1,
-        name: "NailSalonDirectories.com",
+        name: "BarbershopDirectories.com",
         item: `${siteUrl}/`,
       },
       {
@@ -117,7 +117,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
     mainEntity: [
       {
         "@type": "Question",
-        name: `How many nail salons are in ${provinceName}?`,
+        name: `How many barber shops are in ${provinceName}?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: `Our directory lists ${totalFacilities.toLocaleString()} verified facilities across ${cities.length.toLocaleString()} cities.`,
@@ -125,7 +125,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
       },
       {
         "@type": "Question",
-        name: `What types of nail salon services are available in ${provinceName}?`,
+        name: `What types of barber shop services are available in ${provinceName}?`,
         acceptedAnswer: {
           "@type": "Answer",
           text: `${careTypesSentence}.`,
@@ -133,7 +133,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
       },
       {
         "@type": "Question",
-        name: "How are salons selected for this directory?",
+        name: "How are barber shops selected for this directory?",
         acceptedAnswer: {
           "@type": "Answer",
           text: "All listings are sourced from Google Maps, verified, and must have a minimum 3-star rating.",
@@ -145,16 +145,16 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
   const webpageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `Nail Salons in ${provinceName}, Canada`,
+    name: `Barber Shops in ${provinceName}, Canada`,
     url: `${siteUrl}/canada/${resolvedProvinceSlug}`,
     isPartOf: {
       "@type": "WebSite",
-      name: "NailSalonDirectories.com",
+      name: "BarbershopDirectories.com",
       url: `${siteUrl}/`,
     },
     about: [
-      { "@type": "Thing", name: `${provinceName} nail salons` },
-      ...salonCategorySchemaThings(),
+      { "@type": "Thing", name: `${provinceName} barber shops` },
+      ...barberCategorySchemaThings(),
     ],
     speakable: {
       "@type": "SpeakableSpecification",
@@ -189,25 +189,25 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
         className="mb-4 flex items-center justify-center gap-2 rounded-full bg-teal px-5 py-3 text-center text-sm font-semibold text-white shadow-md transition hover:bg-teal-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2"
         aria-label="View featured listing pricing and benefits"
       >
-        Get your salon featured — view pricing &amp; benefits →
+        Get your shop featured — view pricing &amp; benefits →
       </Link>
       <section className="rounded-2xl bg-surface-muted px-5 py-6 text-foreground shadow-lg shadow-navy/10 ring-1 ring-gold/40 sm:px-8 sm:py-8">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-gold-soft">
           Province overview
         </p>
         <h1 className="mt-2 text-3xl font-semibold sm:text-4xl">
-          Nail Salons in {provinceName}, Canada
+          Barber Shops in {provinceName}, Canada
         </h1>
         <p className="mt-3 max-w-2xl text-sm text-foreground/80">
-          Explore {salonFocusText} across {provinceName}, including major
-          city areas such as {majorCitiesText}. Use this page to find salons by
+          Explore {barberFocusText} across {provinceName}, including major
+          city areas such as {majorCitiesText}. Use this page to find barber shops by
           city.
         </p>
 
         <div className="mt-5 grid gap-4 text-sm sm:grid-cols-3">
           <div className="rounded-xl bg-surface p-4 ring-1 ring-navy/10">
             <p className="text-xs font-semibold uppercase tracking-wide text-gold-soft">
-              Salons listed
+              Barber shops listed
             </p>
             <p className="mt-1 text-2xl font-semibold">
               {totalFacilities.toLocaleString()}
@@ -246,7 +246,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
               Top Picks in {provinceName}
             </h2>
             <p className="text-sm text-slate-600">
-              Featured salons in {provinceName} — verified listings with
+              Featured barber shops in {provinceName} — verified listings with
               priority placement.
             </p>
             <div className="mt-4 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
@@ -262,11 +262,11 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-navy border-b-2 border-teal/50 pb-1 inline-block">
-              Salons by City in {provinceName}
+              Barber Shops by City in {provinceName}
             </h2>
             <p className="mt-1 max-w-2xl text-sm text-slate-600">
-              Choose a city to browse nail salons, nail technicians, and manicurists in{" "}
-              {provinceName}, including manicures, pedicures, and gel or acrylic nail services.
+              Choose a city to browse barber shops and barbers in{" "}
+              {provinceName}, including haircuts, shaves, and beard services.
             </p>
           </div>
           <div className="text-xs text-slate-500">
@@ -278,7 +278,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
 
         {cities.length === 0 ? (
           <p className="text-sm text-slate-600">
-            We don&apos;t have salons listed for {provinceName} yet. As new data
+            We don&apos;t have barber shops listed for {provinceName} yet. As new data
             becomes available, cities and listings will appear here.
           </p>
         ) : (
@@ -293,7 +293,7 @@ export default async function ProvincePage({ params }: ProvincePageProps) {
                   <span className="font-medium">{city.cityName}</span>
                   <span className="text-xs text-slate-600 group-hover:text-navy/85">
                     {city.facilityCount.toLocaleString()}{" "}
-                    {city.facilityCount === 1 ? "salon" : "salons"}
+                    {city.facilityCount === 1 ? "shop" : "shops"}
                   </span>
                 </div>
                 {city.averageRating ? (

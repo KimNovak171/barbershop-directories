@@ -16,29 +16,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://nailsalondirectories.com"),
+  metadataBase: new URL("https://barbershopdirectories.com"),
   title: {
-    default: "NailSalonDirectories.com | Nail Salon Directory",
-    template: "%s | NailSalonDirectories.com",
+    default: "BarbershopDirectories.com | Barber Shop Directory",
+    template: "%s | BarbershopDirectories.com",
   },
   description:
-    "NailSalonDirectories.com is a professional, easy-to-use nail salon directory helping clients find local nail salons, nail technicians, manicurists, manicures, and pedicures across the United States and Canada.",
+    "BarbershopDirectories.com is a professional, easy-to-use barber shop directory helping clients find local barber shops, barbers, haircuts, and shaves across the United States and Canada.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "NailSalonDirectories.com | Nail Salon Directory",
+    title: "BarbershopDirectories.com | Barber Shop Directory",
     description:
-      "Trusted resource to explore and compare nail salons, manicures, and pedicures across North America.",
+      "Trusted resource to explore and compare barber shops, haircuts, and shaves across North America.",
     url: "/",
-    siteName: "NailSalonDirectories.com",
+    siteName: "BarbershopDirectories.com",
     type: "website",
     images: [
       {
         url: "/og-image.svg",
         width: 1200,
         height: 630,
-        alt: "NailSalonDirectories.com logo preview",
+        alt: "BarbershopDirectories.com logo preview",
       },
     ],
   },
@@ -88,9 +88,9 @@ export default async function RootLayout({
                 <Link
                   href="/"
                   className="text-[11px] font-bold tracking-[0.28em] sm:text-xs text-brand-ink transition-colors hover:opacity-80"
-                  aria-label="NailSalonDirectories.com – go to homepage"
+                  aria-label="BarbershopDirectories.com – go to homepage"
                 >
-                  NailSalonDirectories.com
+                  BarbershopDirectories.com
                 </Link>
                 <nav className="flex items-center gap-4" aria-label="Main navigation">
                   <Link
@@ -120,7 +120,7 @@ export default async function RootLayout({
                 </nav>
               </div>
               <p className="ml-4 hidden max-w-xs text-right text-xs text-brand-ink/85 sm:block">
-                Trusted nail salon directory for clients choosing their next appointment.
+                Trusted barber shop directory for clients choosing their next appointment.
               </p>
             </div>
           </header>
@@ -200,7 +200,7 @@ export default async function RootLayout({
           <footer className="w-full border-t border-teal/10 bg-surface">
             <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-5 text-xs text-foreground/80 sm:px-6 lg:px-8">
               <p>
-                © {new Date().getFullYear()} NailSalonDirectories.com. For
+                © {new Date().getFullYear()} BarbershopDirectories.com. For
                 informational purposes only – always verify licensing,
                 certifications, and safety requirements with your local authority.
               </p>
@@ -218,7 +218,7 @@ export default async function RootLayout({
                   Advertise
                 </Link>
                 <Link href="/advertise" className="hover:text-teal-soft">
-                  For salons &amp; nail technicians
+                  For barber shops &amp; barbers
                 </Link>
                 <Link href="/advertise" className="hover:text-teal-soft">
                   Featured Listing

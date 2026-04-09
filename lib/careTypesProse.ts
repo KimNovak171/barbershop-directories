@@ -1,21 +1,20 @@
 /**
  * Turn raw Google-style category labels into short, natural phrases for prose
- * (e.g. city page intros). Omits entries that do not look nail-salon-related.
+ * (e.g. city page intros). Omits entries that do not look barber-shop-related.
  */
 
 const EXACT_PHRASE: Record<string, string> = {
-  "nail salon": "nail salons",
-  "nail technician": "nail technicians",
-  manicurist: "manicurists",
-  "nail spa": "nail spas",
-  manicure: "manicures",
-  pedicure: "pedicures",
+  "barber shop": "barber shops",
+  barbershop: "barber shops",
+  "barbería": "barberías",
+  barbier: "barbiers",
+  barbearia: "barbearias",
 };
 
-const NAIL_SALON_LIKE =
-  /nail|manicure|pedicure|manicurist|technician|gel\s*nail|acrylic|shellac|dip\s*powder/i;
+const BARBER_SHOP_LIKE =
+  /barber|barbearia|barbier|barbería|haircut|shave|fade|taper|clipper|beard|mustache|stylist|tonsorial/i;
 
-/** Labels that match common noise but are not nail salon services. */
+/** Labels that match common noise but are not barber shop services. */
 const NON_SALON =
   /auto\s+repair|collision|transmission|student\s+dormitory|orthodox\s+church|storage\s+facility|insurance\s+agency|urolog/i;
 
@@ -36,9 +35,6 @@ function humanizeFallback(raw: string): string {
   if (s.endsWith(" center")) {
     return s.replace(/ center$/, " centers");
   }
-  if (s.endsWith("ist") && !/manicurist$/.test(s)) {
-    return `${s}s`;
-  }
   if (!s.endsWith("s")) {
     return `${s}s`;
   }
@@ -50,7 +46,7 @@ function phraseForLabel(raw: string): string | null {
   if (!key) return null;
   if (NON_SALON.test(key)) return null;
   if (EXACT_PHRASE[key]) return EXACT_PHRASE[key];
-  if (!NAIL_SALON_LIKE.test(raw)) return null;
+  if (!BARBER_SHOP_LIKE.test(raw)) return null;
   return humanizeFallback(raw);
 }
 
@@ -79,20 +75,21 @@ export function formatCareTypesClause(
     if (phrases.length >= maxItems) break;
   }
   if (phrases.length === 0) {
-    return "including nail salons, nail technicians, manicurists, manicures, and pedicures";
+    return "including barber shops, barbers, haircuts, and shaves";
   }
   return `including ${oxfordJoin(phrases)}`;
 }
 
-/** Schema.org `Thing` entries for primary nail service categories on this directory. */
-export function salonCategorySchemaThings(): { "@type": "Thing"; name: string }[] {
+/** Schema.org `Thing` entries for primary barber categories on this directory. */
+export function barberCategorySchemaThings(): { "@type": "Thing"; name: string }[] {
   return [
-    { "@type": "Thing", name: "Nail Salon" },
-    { "@type": "Thing", name: "Nail Technician" },
-    { "@type": "Thing", name: "Manicurist" },
+    { "@type": "Thing", name: "Barber Shop" },
+    { "@type": "Thing", name: "Barbería" },
+    { "@type": "Thing", name: "Barbier" },
+    { "@type": "Thing", name: "Barbearia" },
   ];
 }
 
 /** Default sentence when no care-type stats exist (FAQ answers, etc.). */
-export const DEFAULT_SALON_CARE_TYPES_SENTENCE =
-  "Nail Salon, Nail Technician, Manicurist";
+export const DEFAULT_BARBER_CARE_TYPES_SENTENCE =
+  "Barber Shop, Barbería, Barbier, Barbearia";

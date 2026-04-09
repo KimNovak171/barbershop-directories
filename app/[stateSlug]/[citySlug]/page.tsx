@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { FacilityCard } from "@/components/FacilityCard";
-import { formatCareTypesClause } from "@/lib/careTypesProse";
+import {
+  barberCategorySchemaThings,
+  formatCareTypesClause,
+} from "@/lib/careTypesProse";
 import {
   getCityFacilities,
   getDirectoryIndex,
   getHreflangForRegionSlug,
   getOtherCitiesInState,
 } from "@/lib/stateFacilities";
-import { salonCategorySchemaThings } from "@/lib/careTypesProse";
 
-const siteUrl = "https://nailsalondirectories.com";
+const siteUrl = "https://barbershopdirectories.com";
 
 type CityPageProps = {
   params: Promise<{ stateSlug: string; citySlug: string }>;
@@ -29,8 +31,8 @@ export async function generateMetadata({
   const { stateName, cityName, facilities: cityFacilities } =
     await getCityFacilities(safeState, safeCity);
   const count = Array.isArray(cityFacilities) ? cityFacilities.length : 0;
-  const title = `Nail Salons in ${cityName}, ${stateName} | Nail Salon Directories`;
-  const description = `Find trusted nail salons and nail technicians in ${cityName}, ${stateName}—browse ${count.toLocaleString()} verified listings with contact details, maps, and Google ratings so you can choose with confidence.`;
+  const title = `Barber Shops in ${cityName}, ${stateName} | Barber Shop Directories`;
+  const description = `Find trusted barber shops and barbers in ${cityName}, ${stateName}—browse ${count.toLocaleString()} verified listings with contact details, maps, and Google ratings so you can choose with confidence.`;
 
   return {
     title,
@@ -45,14 +47,14 @@ export async function generateMetadata({
       title,
       description,
       url: canonicalPath,
-      siteName: "NailSalonDirectories.com",
+      siteName: "BarbershopDirectories.com",
       type: "website",
       images: [
         {
           url: "/og-image.svg",
           width: 1200,
           height: 630,
-          alt: `${cityName}, ${stateName} nail salon directory preview`,
+          alt: `${cityName}, ${stateName} barber shop directory preview`,
         },
       ],
     },
@@ -109,7 +111,7 @@ export default async function CityPage({ params }: CityPageProps) {
       {
         "@type": "ListItem",
         position: 1,
-        name: "NailSalonDirectories.com",
+        name: "BarbershopDirectories.com",
         item: `${siteUrl}/`,
       },
       {
@@ -130,23 +132,23 @@ export default async function CityPage({ params }: CityPageProps) {
   const webpageSchema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    name: `Nail Salons in ${cityName}, ${stateName}`,
+    name: `Barber Shops in ${cityName}, ${stateName}`,
     url: `${siteUrl}/${stateSlugNorm}/${citySlugNorm}`,
     isPartOf: {
       "@type": "WebSite",
-      name: "NailSalonDirectories.com",
+      name: "BarbershopDirectories.com",
       url: `${siteUrl}/`,
     },
     about: [
       {
         "@type": "Thing",
-        name: `${cityName} nail salons`,
+        name: `${cityName} barber shops`,
       },
       {
         "@type": "Thing",
-        name: `${stateName} nail salon listings`,
+        name: `${stateName} barber shop listings`,
       },
-      ...salonCategorySchemaThings(),
+      ...barberCategorySchemaThings(),
     ],
     speakable: {
       "@type": "SpeakableSpecification",
@@ -166,19 +168,19 @@ export default async function CityPage({ params }: CityPageProps) {
       />
       <header className="space-y-4">
         <p className="text-xs font-semibold uppercase tracking-[0.2em] text-teal">
-          Salons by city
+          Barber shops by city
         </p>
         <h1 className="text-3xl font-semibold text-navy">
-          Nail Salons in {cityName}, {stateName}
+          Barber Shops in {cityName}, {stateName}
         </h1>
         <p className="max-w-2xl text-sm text-slate-600">
-          {cityName} has {facilities.length.toLocaleString()} verified salon
+          {cityName} has {facilities.length.toLocaleString()} verified barber shop
           listings {careTypesClause}. Browse all options below, each with
           Google Maps profile links and ratings data where available.
         </p>
         <p className="max-w-2xl text-sm text-slate-600">
-          Compare salons side by side, review services and contact details,
-          and find the right nail technician or salon for you in{" "}
+          Compare shops side by side, review services and contact details,
+          and find the right barber or barber shop for you in{" "}
           {stateName}.
         </p>
       </header>
@@ -209,12 +211,12 @@ export default async function CityPage({ params }: CityPageProps) {
 
       <section className="mt-8 space-y-4">
         <h2 className="text-sm font-semibold uppercase tracking-[0.18em] text-navy">
-          Salons in {cityName}
+          Barber shops in {cityName}
         </h2>
 
         {facilities.length === 0 ? (
           <p className="text-sm text-slate-600">
-            We don&apos;t have salons listed for {cityName}, {stateName} yet.
+            We don&apos;t have barber shops listed for {cityName}, {stateName} yet.
             As new data becomes available, listings will appear here.
           </p>
         ) : (
@@ -247,7 +249,7 @@ export default async function CityPage({ params }: CityPageProps) {
                 <p className="font-medium">{city.cityName}</p>
                 <p className="text-xs text-slate-600">
                   {city.facilityCount.toLocaleString()}{" "}
-                  {city.facilityCount === 1 ? "salon" : "salons"}
+                  {city.facilityCount === 1 ? "shop" : "shops"}
                 </p>
               </Link>
             ))}
