@@ -44,47 +44,16 @@ export default async function CanadaLandingPage() {
     <div className="bg-surface-muted text-foreground">
       <section className="bg-surface">
         <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
-          <div className="space-y-6 rounded-2xl bg-brand-gradient px-6 py-8 text-brand-ink shadow-sm sm:px-8 sm:py-10">
-            <p className="inline-flex rounded-full border border-brand-ink/20 bg-white/35 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] backdrop-blur-sm">
+          <div className="space-y-6 rounded-2xl bg-brand-gradient px-6 py-8 text-white shadow-sm sm:px-8 sm:py-10">
+            <p className="inline-flex rounded-full border border-white/35 bg-white/15 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white backdrop-blur-sm">
               Canadian Barber Shop Directories
             </p>
             <h1 className="text-balance text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
               Barber Shops in Canada — Province by Province
             </h1>
-            <p className="max-w-2xl text-balance text-sm sm:text-base text-brand-ink/85">
+            <p className="max-w-2xl text-balance text-sm sm:text-base text-white/90">
               Verified barber shops across provinces and territories.
               Every listing rated 3★ or higher on Google Maps.
-            </p>
-          </div>
-
-          <div className="w-full rounded-2xl border-2 border-teal/40 bg-surface p-6 shadow-xl shadow-navy/20 ring-1 ring-teal/30">
-            <h2 className="text-xl font-semibold text-foreground">
-              Choose a province
-            </h2>
-            <p className="mt-2 text-sm text-foreground/90">
-              Browse verified barber shops by province, then drill down
-              by city to compare services and contact details.
-            </p>
-            <p className="mt-2 text-sm font-medium text-foreground">
-              {directory.map((item) => item.provinceName).join(" • ")}
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-              {directory.map((item) => (
-                <Link
-                  key={item.provinceSlug}
-                  href={`/canada/${item.provinceSlug}`}
-                  className="rounded-xl border-2 border-gold bg-surface-muted px-5 py-4 text-left text-navy transition hover:bg-surface-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-background"
-                >
-                  <p className="text-lg font-semibold">{item.provinceName}</p>
-                  <p className="mt-1 text-sm text-gold-soft">
-                    {item.provinceName} — {item.totalFacilities.toLocaleString()} shops
-                  </p>
-                </Link>
-              ))}
-            </div>
-            <p className="mt-4 text-sm font-medium text-foreground">
-              Each province has its own dedicated directory — specific
-              salons, specific cities, built for that province only.
             </p>
           </div>
 
@@ -129,6 +98,37 @@ export default async function CanadaLandingPage() {
               </div>
             </div>
           </section>
+
+          <div className="w-full rounded-2xl border-2 border-teal/40 bg-surface p-6 shadow-xl shadow-navy/20 ring-1 ring-teal/30">
+            <h2 className="text-xl font-semibold text-foreground">
+              Choose a province
+            </h2>
+            <p className="mt-2 text-sm text-foreground/90">
+              Browse verified barber shops by province, then drill down
+              by city to compare services and contact details.
+            </p>
+            <p className="mt-2 text-sm font-medium text-foreground">
+              {directory.map((item) => item.provinceName).join(" • ")}
+            </p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {directory.map((item) => (
+                <Link
+                  key={item.provinceSlug}
+                  href={`/canada/${item.provinceSlug}`}
+                  className="rounded-xl border-2 border-gold bg-surface-muted px-5 py-4 text-left text-navy transition hover:bg-surface-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  <p className="text-lg font-semibold">{item.provinceName}</p>
+                  <p className="mt-1 text-sm text-gold-soft">
+                    {item.provinceName} — {item.totalFacilities.toLocaleString()} shops
+                  </p>
+                </Link>
+              ))}
+            </div>
+            <p className="mt-4 text-sm font-medium text-foreground">
+              Each province has its own dedicated directory — specific
+              shops, specific cities, built for that province only.
+            </p>
+          </div>
         </div>
       </section>
 

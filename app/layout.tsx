@@ -82,12 +82,12 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex min-h-screen flex-col bg-surface-muted text-foreground">
-          <header className="bg-brand-gradient w-full border-b-[3px] border-brand-champagne/50 text-brand-ink">
+          <header className="bg-brand-gradient w-full border-b-[3px] border-white/25 text-white">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
               <div className="flex items-center gap-6">
                 <Link
                   href="/"
-                  className="text-[11px] font-bold tracking-[0.28em] sm:text-xs text-brand-ink transition-colors hover:opacity-80"
+                  className="text-[11px] font-bold tracking-[0.28em] sm:text-xs text-white transition-colors hover:opacity-90"
                   aria-label="BarbershopDirectories.com – go to homepage"
                 >
                   BarbershopDirectories.com
@@ -95,31 +95,31 @@ export default async function RootLayout({
                 <nav className="flex items-center gap-4" aria-label="Main navigation">
                   <Link
                     href="/"
-                    className="text-xs font-medium text-brand-ink/90 transition-colors hover:text-brand-ink"
+                    className="text-xs font-medium text-white/90 transition-colors hover:text-white"
                   >
                     USA
                   </Link>
                   <Link
                     href="/canada"
-                    className="text-xs font-medium text-brand-ink/90 transition-colors hover:text-brand-ink"
+                    className="text-xs font-medium text-white/90 transition-colors hover:text-white"
                   >
                     Canada
                   </Link>
                   <Link
                     href="/contact"
-                    className="text-xs font-medium text-brand-ink/90 transition-colors hover:text-brand-ink"
+                    className="text-xs font-medium text-white/90 transition-colors hover:text-white"
                   >
                     Contact
                   </Link>
                   <Link
                     href="/advertise"
-                    className="inline-flex items-center rounded-full border border-brand-ink/20 bg-white/45 px-4 py-2 text-xs font-semibold text-brand-ink shadow-sm backdrop-blur-sm transition hover:bg-white/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-surface-muted"
+                    className="inline-flex items-center rounded-full border border-white/50 bg-white px-4 py-2 text-xs font-semibold text-navy shadow-sm transition hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
                   >
                     Advertise
                   </Link>
                 </nav>
               </div>
-              <p className="ml-4 hidden max-w-xs text-right text-xs text-brand-ink/85 sm:block">
+              <p className="ml-4 hidden max-w-xs text-right text-xs text-white/90 sm:block">
                 Trusted barber shop directory for clients choosing their next appointment.
               </p>
             </div>
