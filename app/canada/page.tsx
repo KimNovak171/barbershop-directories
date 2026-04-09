@@ -45,13 +45,13 @@ export default async function CanadaLandingPage() {
       <section className="bg-surface">
         <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
           <div className="space-y-6 rounded-2xl bg-brand-gradient px-6 py-8 text-white shadow-sm sm:px-8 sm:py-10">
-            <p className="inline-flex rounded-full border border-white/35 bg-white/15 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+            <p className="inline-flex rounded-full bg-teal px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white">
               Canadian Barber Shop Directories
             </p>
-            <h1 className="text-balance text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+            <h1 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
               Barber Shops in Canada — Province by Province
             </h1>
-            <p className="max-w-2xl text-balance text-sm sm:text-base text-white/90">
+            <p className="max-w-2xl text-balance text-sm text-white sm:text-base">
               Verified barber shops across provinces and territories.
               Every listing rated 3★ or higher on Google Maps.
             </p>

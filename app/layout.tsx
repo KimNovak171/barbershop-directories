@@ -82,7 +82,7 @@ export default async function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex min-h-screen flex-col bg-surface-muted text-foreground">
-          <header className="bg-brand-gradient w-full border-b-[3px] border-white/25 text-white">
+          <header className="bg-brand-gradient w-full border-b-[3px] border-teal text-white">
             <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
               <div className="flex items-center gap-6">
                 <Link
@@ -95,31 +95,31 @@ export default async function RootLayout({
                 <nav className="flex items-center gap-4" aria-label="Main navigation">
                   <Link
                     href="/"
-                    className="text-xs font-medium text-white/90 transition-colors hover:text-white"
+                    className="text-xs font-medium text-white transition-colors hover:opacity-90"
                   >
                     USA
                   </Link>
                   <Link
                     href="/canada"
-                    className="text-xs font-medium text-white/90 transition-colors hover:text-white"
+                    className="text-xs font-medium text-white transition-colors hover:opacity-90"
                   >
                     Canada
                   </Link>
                   <Link
                     href="/contact"
-                    className="text-xs font-medium text-white/90 transition-colors hover:text-white"
+                    className="text-xs font-medium text-white transition-colors hover:opacity-90"
                   >
                     Contact
                   </Link>
                   <Link
                     href="/advertise"
-                    className="inline-flex items-center rounded-full border border-white/50 bg-white px-4 py-2 text-xs font-semibold text-navy shadow-sm transition hover:bg-white/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+                    className="inline-flex items-center rounded-full bg-teal px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-teal-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
                   >
                     Advertise
                   </Link>
                 </nav>
               </div>
-              <p className="ml-4 hidden max-w-xs text-right text-xs text-white/90 sm:block">
+              <p className="ml-4 hidden max-w-xs text-right text-xs text-white sm:block">
                 Trusted barber shop directory for clients choosing their next appointment.
               </p>
             </div>

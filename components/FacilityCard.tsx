@@ -21,7 +21,7 @@ type FacilityCardProps = {
   facility: Facility;
 };
 
-const CARE_TYPE_BADGE_COLOR = "#c0392b";
+const CARE_TYPE_BADGE_COLOR = "#e8192c";
 
 function truncateToWords(text: string, maxWords: number): string {
   const trimmed = (text ?? "").trim();

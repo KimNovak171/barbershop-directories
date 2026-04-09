@@ -74,13 +74,13 @@ export default async function Home() {
         <div className="mx-auto flex max-w-6xl flex-col gap-10 px-4 py-12 sm:px-6 lg:py-16 lg:px-8">
           <div className="flex flex-col gap-6">
             <div className="space-y-6 rounded-2xl bg-brand-gradient px-6 py-8 text-white shadow-sm sm:px-8 sm:py-10">
-              <p className="inline-flex rounded-full border border-white/35 bg-white/15 px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white backdrop-blur-sm">
+              <p className="inline-flex rounded-full bg-teal px-3 py-1 text-xs font-medium uppercase tracking-[0.2em] text-white">
                 Barber Shop Directories
               </p>
-              <h1 className="text-balance text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl">
+              <h1 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-5xl">
                 Find Trusted Barber Shops — US States &amp; Canadian Provinces
               </h1>
-              <p className="max-w-2xl text-balance text-sm sm:text-base text-white/90">
+              <p className="max-w-2xl text-balance text-sm text-white sm:text-base">
                 Verified barber shops and barbers across the United States and Canada—browse by
                 state or province, then by city. Every listing rated 3★ or higher
                 on Google Maps.
