@@ -30,8 +30,8 @@ export const metadata: Metadata = {
 };
 
 const siteUrl = "https://barbershopdirectories.com";
-const STRIPE_LINK_49 = "https://buy.stripe.com/cNi4gzfiG9LNfoycTLfAc0A";
-const STRIPE_LINK_99 = "https://buy.stripe.com/5kQ7sL2vU7DF0tE06ZfAc0B";
+const STRIPE_LINK_49 = "https://buy.stripe.com/bJedR9eeC8HJ7W6f1TfAc0C";
+const STRIPE_LINK_99 = "https://buy.stripe.com/4gM5kD1rQ2jl7W6f1TfAc0D";
 
 export default function AdvertisePage() {
   const breadcrumbSchema = {
